@@ -1,0 +1,36 @@
+﻿@model LaraAbdallah_Homework2.ViewModels.RandomMovieViewModel
+
+@{
+    ViewBag.Title = "Random";
+    Layout="~/Views/Shared/_Layout.cshtml";
+}
+@{
+    var className = Model.Customers.Count > 0 ? "popular" : null;
+}
+
+@*<h2 class="@className">@Model.Movie.Name</h2>*@
+<h2>Customers</h2>
+@if (Model.Customers.Count == 0)
+{
+    <text> No one has rented this movie before.</text>
+
+}
+else
+{
+    int id = 1;
+
+    <ul>
+        @foreach (var customer in Model.Customers)
+        {
+
+            <li>@Html.ActionLink(customer.Name, "GetCustomer", "Movie", new { id = id++ }, null) </li>
+        }
+    </ul>
+
+
+}
+
+
+
+
+
